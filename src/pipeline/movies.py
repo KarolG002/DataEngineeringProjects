@@ -70,8 +70,9 @@ def clean_movie_data(movie_data_dict: dict) -> dict:
         "ratings_imdb": float(imdb_rating) if imdb_rating else "0",
     }
 
+    if cleaned_data["title"] == "0":
+        return None
 
-    print("Cleaned Data:", cleaned_data)
     return cleaned_data
 @task
 def insert_to_db(
@@ -141,6 +142,10 @@ def process_movies(
             print(f"Fetching data for: {movie_title} made in {movie_year}")
             movie_data_dict = retrieve_movie_from_api(movie_title, movie_year)
             cleaned_data = clean_movie_data(movie_data_dict)
+            if cleaned_data is None:
+                print(f"Skipping record for {movie_title} due to missing title or other missing data")
+                continue
+            print(cleaned_data)
             insert_to_db(cleaned_data, db_host, db_user, db_pass, db_name,)
             print(f"Inserted data for: {movie_title}")
         except requests.RequestException as e:
