@@ -1,11 +1,10 @@
 [project]
 name = "intro-to-prefect"
-description = "An introductory project to Prefect"
+description = "A beginner project for scheduling with Prefect"
 version = "0.1.0"
 
 dependencies = [
     "prefect ~= 2.13.2",
-    "httpx ~= 0.25.0",
     "psycopg2-binary ~= 2.9.7"
 ]
 
