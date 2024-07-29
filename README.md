@@ -4,7 +4,7 @@ This project implements an ETL (Extract, Transform, Load) pipeline to fetch, pro
 
 ## Project Architecture
 
-![Project Architecture](FilmFetcher_Postgres\images\Architecture_diagram.png)
+![FilmFetches_Postgres](images/Architecture_diagram.png "Architecture diagram")
 
 ## Components
 
@@ -27,3 +27,25 @@ This project implements an ETL (Extract, Transform, Load) pipeline to fetch, pro
 ### 5. PostgreSQL Server
 - **Description**: A relational database management system.
 - **Role**: Stores the processed movie data.
+
+## Setup and Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/KarolG002/FilmFetcher_Postgres.git
+2. **Set up docker**:
+   Ensure Docker is installed on your system.
+   Start the PostgreSQL container:
+   docker compose up -d
+
+3. **Set Up Prefect**:
+   (https://docs.prefect.io/latest/getting-started/installation/)
+   Start Prefect server:
+   prefect server start
+
+4. **Create a creds.py file with your API key and CSV file path with movies you want to search**:
+
+    API_KEY = 'your_api_key'
+
+    filepath = 'path_to_your_csv_file.csv'
+
