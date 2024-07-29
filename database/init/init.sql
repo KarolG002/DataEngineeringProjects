@@ -1,7 +1,5 @@
-
---CREATE DATABASE moviesdb;
-
--- \c movies_db;
+ SELECT 'CREATE DATABASE moviesdb'
+ WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'moviesdb')\gexec
 
 CREATE TABLE IF NOT EXISTS movies (
     id SERIAL PRIMARY KEY,

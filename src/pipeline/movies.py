@@ -8,7 +8,7 @@ from prefect import flow, get_run_logger, task
 import psycopg2
 #CONSTANTS
 API_URL = "http://www.omdbapi.com/"
-RECORDS_PER_DAY = 5
+RECORDS_PER_HOUR = 10
 STATE_FILE = "pagination_state.json"
 #new
 @task
@@ -33,17 +33,23 @@ def get_data_from_csv() -> list:
 
 
 @task
-def retrieve_movie_from_api(
-        title: str, 
-        year: str
-) -> dict:
+def retrieve_movie_from_api(title: str, year: str) -> dict:
     logger = get_run_logger()
-    url=f"{API_URL}?t={title}&y={year}&apikey={creds.API_KEY}"
-    response = requests.get(url)
-    response.raise_for_status() 
-    movie_data_dict = response.json()
-    logger.info(movie_data_dict)
-    return movie_data_dict
+    url = f"{API_URL}?t={title}&y={year}&apikey={creds.API_KEY}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        response.encoding = 'utf-8' 
+        movie_data_dict = response.json()
+        logger.info(movie_data_dict)
+        return movie_data_dict
+    except UnicodeDecodeError as e:
+        logger.error(f"Unicode decode error for {title} ({year}): {e}")
+        return None
+    except requests.RequestException as e:
+        logger.error(f"Request error for {title} ({year}): {e}")
+        return None
+
 
 @task
 def clean_movie_data(movie_data_dict: dict) -> dict:
@@ -133,7 +139,7 @@ def process_movies(
     
     title_list, year_list = get_data_from_csv()
     
-    end_index = min(last_index + RECORDS_PER_DAY, len(title_list))
+    end_index = min(last_index + RECORDS_PER_HOUR, len(title_list))
 
     for i in range(last_index, end_index):
         movie_title = title_list[i]

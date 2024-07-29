@@ -8,7 +8,7 @@ movieId,title,genres
 7,Sabrina (1995),Comedy|Romance
 8,Tom and Huck (1995),Adventure|Children
 9,Sudden Death (1995),Action
-10,GoldenEye (1995),Action|Adventure|Thriller
+10,"GoldenEye (1995)",Action|Adventure|Thriller
 11,"American President, The (1995)",Comedy|Drama|Romance
 12,Dracula: Dead and Loving It (1995),Comedy|Horror
 13,Balto (1995),Adventure|Animation|Children
@@ -27,7 +27,7 @@ movieId,title,genres
 26,Othello (1995),Drama
 27,Now and Then (1995),Children|Drama
 28,Persuasion (1995),Drama|Romance
-29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",Adventure|Drama|Fantasy|Mystery|Sci-Fi
+29,"City of Lost Children, The (Cite des enfants perdus, La) (1995)",Adventure|Drama|Fantasy|Mystery|Sci-Fi
 30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),Crime|Drama
 31,Dangerous Minds (1995),Drama
 32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),Mystery|Sci-Fi|Thriller
@@ -37,7 +37,7 @@ movieId,title,genres
 36,Dead Man Walking (1995),Crime|Drama
 39,Clueless (1995),Comedy|Romance
 40,"Cry, the Beloved Country (1995)",Drama
-41,Richard III (1995),Drama|War
+41,Richard 3 (1995),Drama|War
 42,Dead Presidents (1995),Action|Crime|Drama
 43,Restoration (1995),Drama
 44,Mortal Kombat (1995),Action|Adventure|Fantasy
