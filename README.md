@@ -4,7 +4,7 @@ This project implements an ETL (Extract, Transform, Load) pipeline to fetch, pro
 
 ## Project Architecture
 
-![Project Architecture](\images\Architecture_diagram.png)
+![Project Architecture](FilmFetcher_Postgres\images\Architecture_diagram.png)
 
 ## Components
 
